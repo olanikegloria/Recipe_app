@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/sign_out', to: 'users#sign_out', as: 'sign_out'
 
   resources :recipes
+  resources :foods
 
   # resources :users, only: [:index, :show] do
   #   resources :recipes, only: [:index, :show, :new, :create]
