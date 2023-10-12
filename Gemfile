@@ -28,10 +28,6 @@ gem 'jbuilder'
 
 gem 'devise'
 
-gem 'jquery-rails'
-gem 'bootstrap-sass'
-gem 'autoprefixer-rails'
-
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '>= 4.0.1'
 
