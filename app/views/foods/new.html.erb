@@ -35,15 +35,15 @@
                 </div>
 
                 
-
                 <div class="row">
-                  <div class="col-md-7 mb-3">
-                    <div class="form-group">
-                      <%= f.label :quantity %><br />
-                      <%= f.text_area :quantity, autofocus: true, autocomplete: "quantity",  class: "form-control form-control-lg" %>
+                    <div class="col-md-7 mb-3">
+                        <div class="form-group">
+                            <%= f.label :quantity %><br />
+                            <%= f.number_field :quantity, autofocus: true, autocomplete: "quantity",  class: "form-control form-control-lg" %>
+                        </div>
                     </div>
-                  </div>
                 </div>
+
                 
                 <div class="actions py-4">
                   <%= f.submit 'Submit', class: 'btn btn-primary' %>

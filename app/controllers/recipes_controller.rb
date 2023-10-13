@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
     if @recipe.save
-      redirect_to recipes_path
+      redirect_to recipes_path, notice: 'Add new recipe'
     else
       render :new
     end
@@ -28,6 +28,12 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to recipes_path, notice: 'Recipe was successfully deleted.'
+  end
+
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(public: !@recipe.public)
+    render json: { public: @recipe.public }
   end
 
   private

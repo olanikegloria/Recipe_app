@@ -1,0 +1,36 @@
+<div class="container">
+     
+     <h2 class="mb-4">New ingredient (<%= @recipe.name %>)</h2>
+
+
+
+        <%= form_with model: @recipe_food, url: recipe_foods_path(@recipe), class: "form" do |f| %>
+                <div class="row">
+                  <div class="col-md-7 mb-3">
+                    <div class="form-group">
+                        <%= f.label :food_id %><br />
+                        <%= f.collection_select(:food_id, Food.order(:name), :id, :name, { prompt: 'Please select a food' }, { class: 'form-control form-control-lg' }) %>      
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-7 mb-3">
+                        <div class="form-group">
+                            <%= f.label :quantity %><br />
+                            <%= f.number_field :quantity, autofocus: true, autocomplete: "quantity",  class: "form-control form-control-lg" %>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="actions py-4">
+                  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+                </div>
+        <% end %>
+                    
+   
+  </div>
+
+

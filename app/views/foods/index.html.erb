@@ -16,9 +16,10 @@
                </div>
             </div>
 
-          <% if current_user.id  === food.user_id %>
-            <%= link_to 'Delete Food', food_path(food), method: :delete, data: { confirm: 'Are you sure you want to delete this food?' } %>
+            <hr/>
 
+          <% if current_user.id  === food.user_id %>
+            <%= link_to 'Delete Food', food_path(food), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this food?'} %>
         <% end %>
         </div>
          <% end %>

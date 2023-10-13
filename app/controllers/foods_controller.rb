@@ -18,7 +18,7 @@ class FoodsController < ApplicationController
     @food = Food.new(food_params)
     @food.user_id = current_user.id
     if @food.save
-      redirect_to foods_path
+      redirect_to foods_path, notice: 'Add new food'
     else
       render :new
     end
@@ -37,6 +37,6 @@ class FoodsController < ApplicationController
   end
 
   def food_params
-    params.require(:food).permit(:name, :preparation_time, :cooking_time, :description, :public)
+    params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
 end
