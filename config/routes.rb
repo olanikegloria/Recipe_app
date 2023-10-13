@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "home#index"
-
+  root 'home#index'
 
   get '/sign_out', to: 'users#sign_out', as: 'sign_out'
 
