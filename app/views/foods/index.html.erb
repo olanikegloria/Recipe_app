@@ -3,7 +3,6 @@
       <h2>Foods</h2>
       <%= link_to 'Add New Food', new_food_path, class: 'btn btn-primary' %>
     </div>
-    
       <% @foods.each do |food|%>
      <%= link_to controller: 'foods', action: 'show', id: food.id do %>
           <div class="card  p-4 mb-3" >
@@ -15,7 +14,7 @@
                   <h4><%= food.quantity%></h4>
                </div>
             </div>
-
+            
             <hr/>
 
           <% if current_user.id  === food.user_id %>
@@ -25,5 +24,4 @@
          <% end %>
       <% end %>
   </div>
-
-
+  

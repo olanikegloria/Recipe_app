@@ -1,7 +1,5 @@
 <div class="container">
-     
      <h2 class="mb-4">New Food</h2>
-
         <%= form_with model: @food, url: foods_path, class: "form" do |f| %>
                 <div class="row">
                   <div class="col-md-7 mb-3">
@@ -11,11 +9,8 @@
                     </div>
                   </div>
                 </div>
-
-
                 <div class="row">
                   <div class="col-md-7 mb-3">
-
                   <div class="row">
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
@@ -23,7 +18,6 @@
                       <%= f.text_field :measurement_unit, autofocus: true, autocomplete: "measurement_unit",  class: "form-control form-control-lg" %>
                     </div>
                   </div>
-
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
                       <%= f.label :price %><br />
@@ -33,7 +27,6 @@
                 </div>
                 </div>
                 </div>
-
                 
                 <div class="row">
                     <div class="col-md-7 mb-3">
@@ -44,13 +37,8 @@
                     </div>
                 </div>
 
-                
                 <div class="actions py-4">
                   <%= f.submit 'Submit', class: 'btn btn-primary' %>
                 </div>
         <% end %>
-                    
-   
   </div>
-
-
