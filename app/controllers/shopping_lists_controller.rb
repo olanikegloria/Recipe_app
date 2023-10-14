@@ -4,16 +4,21 @@ class ShoppingListsController < ApplicationController
     return unless recipe_id.present?
 
     @recipe = Recipe.includes(:recipe_foods).find(recipe_id)
-    @foods = current_user.foods
     @recipe_foods = @recipe.recipe_foods
-    @items_to_buy = 0
-    @needed_money = 0
-    @recipe_foods.each do |recipe_food|
-      @food = Food.find(recipe_food.food_id)
-      if recipe_food.quantity < @food.quantity
-        @items_to_buy += @food.quantity - recipe_food.quantity
-        @needed_money += @food.price * (@food.quantity - recipe_food.quantity)
-      end
+    @total_amount = 0
+    @shopping_list = []
+    @foods = current_user.foods
+    @foods.each do |food|
+      available_quantity = food.quantity
+      required_quantity = RecipeFood.where(food_id: food.id).sum(:quantity)
+      quantity_needed = available_quantity- required_quantity
+      list = {}
+      list['name'] = food.name
+      list['quantity'] = quantity_needed
+      list['price'] = quantity_needed * food.price
+      @shopping_list.push(list)
+
+      @total_amount += list['price']
     end
   end
 
