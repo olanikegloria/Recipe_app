@@ -3,7 +3,7 @@ class ShoppingListsController < ApplicationController
     recipe_id = params[:recipe_id]
     return unless recipe_id.present?
 
-    @recipe = Recipe.find(recipe_id)
+    @recipe = Recipe.includes(:recipe_foods).find(recipe_id)
     @foods = current_user.foods
     @recipe_foods = @recipe.recipe_foods
     @items_to_buy = 0
