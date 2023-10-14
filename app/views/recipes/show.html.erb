@@ -12,10 +12,12 @@
             </div>
 
             <div>
+             <% if current_user.id  === @recipe.user_id %>
                 <%= form_with model: @recipe, method: :patch,  data: { url: toggle_public_recipe_path(@recipe), recipe_id: @recipe.id } do |form| %>
                     <div class="switch">
                         <input class="" type="checkbox" <%= 'checked' if @recipe.public %> onchange="toggleRecipePublic(this)">
                     </div>
+                <% end %>
                 <% end %>
             </div>
         </div>
@@ -23,8 +25,10 @@
     
 
         <div class="d-flex justify-content-between align-items-center border-bottom border-top py-2 mt-3">
+          <% if current_user.id  === @recipe.user_id %>
             <%= link_to "Generate shopping List", generate_shopping_lists_path(recipe_id: @recipe.id), class: 'btn btn-primary' %>
             <%= link_to "Add ingredient",  new_recipe_recipe_food_path(@recipe.id), class: 'btn btn-primary' %>
+          <% end %>
         </div>
 
         <table class="table table-bordered table-striped table-hover">
@@ -44,7 +48,9 @@
       <td ><%= recipe_food.quantity %></td>
       <td><%= recipe_food.total_price %></td>
       <td>
-                  <%= link_to 'Remove', recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this Ingredient?'}, class: 'btn btn-primary' %>
+        <% if current_user.id  === @recipe.user_id %>
+          <%= link_to 'Remove', recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this Ingredient?'}, class: 'btn btn-primary' %>
+        <% end %>
 
       </td>
       

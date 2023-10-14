@@ -9,7 +9,7 @@
                   <div class="col-md-7 mb-3">
                     <div class="form-group">
                         <%= f.label :food_id %><br />
-                        <%= f.collection_select(:food_id, Food.order(:name), :id, :name, { prompt: 'Please select a food' }, { class: 'form-control form-control-lg' }) %>      
+                        <%= f.collection_select(:food_id, Food.where(user_id: current_user.id).order(:name), :id, :name, { prompt: 'Please select a food' }, { class: 'form-control form-control-lg' }) %>      
                     </div>
                   </div>
                 </div>

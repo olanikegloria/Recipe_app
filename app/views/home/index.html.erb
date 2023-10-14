@@ -4,7 +4,7 @@
     </div>
     
       <% @recipes.each do |recipe|%>
-    
+        <%= link_to controller: 'recipes', action: 'show', id: recipe.id do %>
           <div class="card  p-4 mb-3" >
             <div class="row">
               <div class="col-md-4">
@@ -19,6 +19,7 @@
                </div>
             </div>
           </div>
+        <% end %>
       <% end %>
   </div>
 
