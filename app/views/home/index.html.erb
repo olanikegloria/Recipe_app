@@ -9,9 +9,13 @@
             <div class="row">
               <div class="col-md-4">
                 <h4><%= recipe.name %></h4>
+
+                <span>By: <%= recipe.user.name %></span>
               </div>
                <div class="col-md-8">
-                  <h4><%= recipe.description %></h4>
+                  <h6>Total food items: <%= recipe.recipe_foods.count %></h6>
+                  <h6>Total price: $<%= recipe.recipe_foods.map { |rf| rf.food.price * rf.quantity }.sum %>
+                  </h6>
                </div>
             </div>
           </div>
