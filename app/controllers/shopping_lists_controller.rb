@@ -11,7 +11,7 @@ class ShoppingListsController < ApplicationController
     @foods.each do |food|
       available_quantity = food.quantity
       required_quantity = RecipeFood.where(food_id: food.id).sum(:quantity)
-      quantity_needed = available_quantity- required_quantity
+      quantity_needed = available_quantity - required_quantity
       list = {}
       list['name'] = food.name
       list['quantity'] = quantity_needed
