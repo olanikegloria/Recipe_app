@@ -1,0 +1,41 @@
+
+<% if @items_to_buy != 0 %>
+     <h2 class="mb-4">Shopping Cart</h2>
+     <div class="d-flex justify-content-between align-items-start py-4">
+        <div>
+        <h4>Amount of food items to buy: <%= @shopping_list.length %></h4>
+        <h4>Total value of food needed: $<%= @total_amount %></h4>
+        </div>
+
+        <div>
+
+            <h4>Recipe: <%= link_to controller: 'recipes', action: 'show', id: @recipe.id do %>
+               <%=  @recipe.name %>
+                <% end %>
+            </h4>
+        </div>
+     </div>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Food</th>
+                <th>Quantity</th>
+                <th>Price($)</th>
+            </tr>
+        </thead>
+        <tbody>
+                       <% @shopping_list.each do |food| %>
+                            <tr>
+                                <th><%= food['name'] %></th>
+                                <th><%= food['quantity'] %></th>
+                                <th><%= food['price'] %></th>
+                            </tr>
+                     <% end %>
+                    </tbody>
+                </table>
+    <% else %>
+        <div class="text-center">
+            <p>Kindly go to a recipe to generate a shopping list.</p>
+        </div>
+    <% end %>

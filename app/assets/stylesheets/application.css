@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+a {
+  color: #000;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+
+.navbar-default {
+  transition: all 0.5s ease-in-out;
+  background-color: #fff;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  box-shadow: 1px 2px 15px rgba(100, 100, 100, 0.3);
+}
+
+.navbar-default .nav-link {
+  font-size: 1.1rem;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: all 0.1s ease-in-out;
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar-default .nav-item {
+  margin-left: 15px;
+}
+
+.color-b {
+  color: #2eca6a;
+}
+
+.text-brand {
+  color: #000;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.main {
+  margin-top: 150px;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: #000;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #2eca6a;
+  color: #000;
+}
+
+.switch input[type="checkbox"] {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: red;
+  outline: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  box-shadow: inset 0 0 5px rgb(0 0 0 / 50%);
+}
+
+.switch input[type="checkbox"]::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
+}
+
+.switch input[type="checkbox"]:checked::before {
+  transform: translateX(100%);
+  background: #fff;
+}
+
+.switch input[type="checkbox"]:checked {
+  background: #00ed64;
+}
+
+.notice {
+  background: red;
+  padding: 5px 8px;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.alert {
+  background: green;
+  padding: 5px 8px;
+  color: #fff;
+  border-radius: 3px;
+}

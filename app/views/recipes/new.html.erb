@@ -1,0 +1,56 @@
+<div class="container">
+     
+     <h2 class="mb-4">New Recipe</h2>
+
+        <%= form_with model: @recipe, url: recipes_path, class: "form" do |f| %>
+                <div class="row">
+                  <div class="col-md-7 mb-3">
+                    <div class="form-group">
+                      <%= f.label :name %><br />
+                      <%= f.text_field :name, autofocus: true, autocomplete: "name",  class: "form-control form-control-lg" %>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-7 mb-3">
+
+                        <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <%= f.label :preparation_time %><br />
+                      <%= f.text_field :preparation_time, autofocus: true, autocomplete: "preparation_time",  class: "form-control form-control-lg" %>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <%= f.label :cooking_time %><br />
+                      <%= f.text_field :cooking_time, autofocus: true, autocomplete: "cooking_time",  class: "form-control form-control-lg" %>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                </div>
+
+                
+
+                <div class="row">
+                  <div class="col-md-7 mb-3">
+                    <div class="form-group">
+                      <%= f.label :description %><br />
+                      <%= f.text_area :description, autofocus: true, autocomplete: "description",  class: "form-control form-control-lg" %>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="actions py-4">
+                  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+                </div>
+        <% end %>
+                    
+   
+  </div>
+
+

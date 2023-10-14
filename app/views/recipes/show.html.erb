@@ -1,0 +1,91 @@
+<div class="container">
+     
+     <h2 class="mb-4"><%= @recipe.name %></h2>
+
+        <p><%= @recipe.description %></p>
+
+        <div class="d-flex justify-content-between align-items-start py-4">
+
+            <div>
+                <h5>Preparation Time: <b><%= @recipe.preparation_time %> hour</b></h5>
+                <h5>Cooking Time: <b><%= @recipe.cooking_time %> hour</b></h5>
+            </div>
+
+            <div>
+             <% if current_user.id  === @recipe.user_id %>
+                <%= form_with model: @recipe, method: :patch,  data: { url: toggle_public_recipe_path(@recipe), recipe_id: @recipe.id } do |form| %>
+                    <div class="switch">
+                        <input class="" type="checkbox" <%= 'checked' if @recipe.public %> onchange="toggleRecipePublic(this)">
+                    </div>
+                <% end %>
+                <% end %>
+            </div>
+        </div>
+
+    
+
+        <div class="d-flex justify-content-between align-items-center border-bottom border-top py-2 mt-3">
+          <% if current_user.id  === @recipe.user_id %>
+            <%= link_to "Generate shopping List", generate_shopping_lists_path(recipe_id: @recipe.id), class: 'btn btn-primary' %>
+            <%= link_to "Add ingredient",  new_recipe_recipe_food_path(@recipe.id), class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <th>Food</th>
+                <th>Quantity</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </thead>
+
+            <tbody>
+            
+            <% @recipe.recipe_foods.each do |recipe_food|%>
+             <tr class="">
+    
+      <td><%= recipe_food.food.name %></td>
+      <td ><%= recipe_food.quantity %></td>
+      <td><%= recipe_food.total_price %></td>
+      <td>
+        <% if current_user.id  === @recipe.user_id %>
+          <%= link_to 'Remove', recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this Ingredient?'}, class: 'btn btn-primary' %>
+        <% end %>
+
+      </td>
+      
+    </tr>
+
+    <% end %>
+            
+            </tbody>
+        </table>
+
+     </div>
+
+     <script>
+  function toggleRecipePublic(checkbox) {
+    console.log("called");
+    var form = checkbox.closest("form");
+    var recipeId = form.dataset.recipeId;
+    var url = form.dataset.url;
+
+    var formData = new FormData();
+    formData.append("recipe_id", recipeId);
+
+    fetch(url, {
+      method: "PATCH",
+      body: formData,
+      headers: {
+        "X-CSRF-Token": document.querySelector("meta[name=csrf-token]").content
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+      })
+      .catch(error => {
+        // Handle errors if any
+        console.error(error);
+      });
+  }
+</script>
